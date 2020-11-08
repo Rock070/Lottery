@@ -53,8 +53,15 @@ app.use((req, res, next) => {
 
 app.use(cors())
 // app get
+
+// index
 app.get('/', (req, res) => {
-    res.end('rock')
+    res.render('index')
+})
+
+// admin
+app.get('/admin', (req, res) => {
+    res.render('admin')
 })
 
 // prizeList

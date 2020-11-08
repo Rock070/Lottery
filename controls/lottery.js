@@ -5,8 +5,6 @@ function getRandom(x){
     return Math.floor(Math.random()*x);
 };
 
-
-
 const lotteryControls = {
     index: (req, res) => {
         res.end('rock')
@@ -112,11 +110,12 @@ const lotteryControls = {
                 id
             }
         }).then(() => {
-            res.redirect('http://localhost:8080/rock/week17-BE201/homework-lottery/frontend/admin.html')    
+            res.redirect('/admin')    
         }).catch((err) => {
             console.log(err)
-            res.redirect('http://localhost:8080/rock/week17-BE201/homework-lottery/frontend/admin.html')
+            res.redirect('/admin')
         })
+        
     },
     prizeDeletePost: async function (req, res, next) {
         const id = req.params.id 
@@ -128,15 +127,14 @@ const lotteryControls = {
             }
         }).then(() => {
             console.log('deleted success!')
-            res.redirect('http://localhost:8080/rock/week17-BE201/homework-lottery/frontend/admin.html')    
+            res.redirect('/admin')
         }).catch((err) => {
             console.log(err)
-            res.redirect('http://localhost:8080/rock/week17-BE201/homework-lottery/frontend/admin.html')
+            res.redirect('/admin')
         })
     },
 
 }
-
 
 // npx sequelize-cli model:generate --name PrizeList --attributes prize:string,name:string,number:number,imgurl:string
 // npx sequelize-cli model:generate --name Article --attributes user_id:number,title:string,content:text,type:string

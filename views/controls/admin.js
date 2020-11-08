@@ -68,8 +68,6 @@ $('document').ready(() => {
             number,
             imgurl
         }
-
-
         $.ajax({
             type: 'POST',
             url: 'http://localhost:5002/lottery',

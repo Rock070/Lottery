@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+  <head> 
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./css/main.min.css"/>
+    <title>抽獎</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+      const prizeListApiUrl = '/prizeList'
+      const lotteryResultApiUrl = '/lottery'
+
+      $('document').ready(() => {
+
+          function escapeHtml(unsafe) {
+              return unsafe
+                  .toString()
+                  .replace(/&/g, "&amp;")
+                  .replace(/</g, "&lt;")
+                  .replace(/>/g, "&gt;")
+                  .replace(/"/g, "&quot;")
+                  .replace(/'/g, "&#039;");
+          }
+          // call 所有獎項清單 api，並回傳獎項、數量、圖片
+          const prizeList = fetch(prizeListApiUrl)
+          prizeList.then((res) => {
+              res.json().then((result) => {
+                  let prizeList = result.prizeList[0]
+                  if(result.message == 'success') {
+                      for(prize of prizeList) {
+                          $('.award-list').append(`
+                          <div class='award'>
+                              <h4 class="prize">${escapeHtml(prize.prize)}</h4>
+                              <img width="110" heigh="130" src="${escapeHtml(prize.imgurl)}">
+                              <h4 class='number'>x ${escapeHtml(prize.number)}</h4>
+                          </div> 
+                          `)
+                      }
+                  }
+                  
+                  // 開始抽獎按下後動畫
+                  function startLotteryAnimation() {
+                      const driver = setInterval(frame, 300);
+                      function frame() {
+                          let num = Math.floor(Math.random()*prizeList.length);
+                          $('.result').html(`
+                              <div class='award'>
+                                  <img width="140" heigh="140" src="${escapeHtml(prizeList[num].imgurl)}">
+                              </div> 
+                          `)
+
+                          $('.stop-btn').click((e) => {
+                              clearInterval(driver)
+                              
+                              // call 抽獎結果 api
+                              const lotteryResult = fetch(lotteryResultApiUrl)
+                              lotteryResult.then((res) => {
+                                  res.json().then((result) => {
+                                      $('section#lottery-game .result').html(`
+                                          <div class='award'>
+                                              <h1 class="prize">${escapeHtml(result.prize)}</h1>
+                                              <h3>${escapeHtml(result.name)}</h3>
+                                              <img style="filter:brightness(1)" width="170" heigh="250" src="${escapeHtml(result.imgurl)}">
+                                          </div>
+                                      `)
+                                  })
+                              })
+                          })
+                      }
+                  }
+                  
+                  $('.start-btn').click((e) => {
+                      startLotteryAnimation()
+                      
+                  })
+              })
+          });    
+      });
+
+    </script>
+  </head>
+
+  <body>
+      <br>
+    <header>
+      <a href="./admin">
+        <span class='btn'>管理</span>
+      </a>
+      <h1>which brand?</h1>
+        
+    </header>
+    <section id="lottery-game">
+      <div class="result">
+        <div class='award'>
+            <img width="110" heigh="90" src="https://i.imgur.com/fA32Rvw.png">
+        </div> 
+      </div>
+      <div class='btn start-btn'>開始抽獎</div>
+      <div class='btn stop-btn' >停止抽獎</div>
+
+    </section>
+    <section id='award'>
+        <h3>獎項</h3>
+        <div class="award-list">
+          
+        </div>
+    </section>
+      
+      
+  </body>
+</html>
