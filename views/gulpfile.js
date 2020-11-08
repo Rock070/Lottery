@@ -29,12 +29,6 @@ function compileCSS() {
     .pipe(dest('./css'));
 }
 
-function tinyPng() {
-    return src('./images/src/*.png')
-    .pipe(tinypng('0Pcr5t6Q3JkW4JFf2brV8FLVNGZprgvd'))
-    .pipe(dest('./images/dist'))
-};
-
 
 exports.compileCSS = compileCSS  // 個別執行任務，cli 輸入 `gulp compileCSS`
 // exports.default = parallel(compileJs, compileCSS)
