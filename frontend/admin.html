@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>add prize</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./css/main.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src='./controls/admin.js'></script>
+</head>
+<body>
+    <section id="addPrize">
+        <a href="./index.html"><h1>which brand?</h1></a>
+        <form class='add-prize-form'>
+            <label for="prize">獎項:
+                <input type="text" name='prize' id='prize'> 
+            </label>
+            <label for="name">名稱:
+                <input type="text" name='name' id="name"> 
+            </label>
+            <label for="number">數量:
+                <input type="text" name='number' id='number'> 
+            </label>
+            <label for="imgurl">圖片網址:
+                <input type="text" name='imgurl' id='imgurl'> 
+            </label>
+            <input class='btn' type="submit" value='新增獎項'> 
+        </form>
+    </section>
+    <section id="editPrize">
+        <h1>編輯</h1>
+        <div class="award-list"></div>
+    </section>
+</body>
+
+</html> 

@@ -1,0 +1,214 @@
+$pink: #FFCAD4
+$champagne_pink: #FFE5D9
+$light_pink: #F4ACB7
+$moutainbatten_pink: #9D8179  
+$white: #fff
+
+*
+  // border: 1px solid #000
+  text-align: center
+  position: relative
+
+body, html
+  margin: 0
+  padding: 0
+
+body
+  background-color: $champagne_pink
+
+
+
+.btn
+  margin: 20px 10px
+  padding: 10px 35px
+  border: 3px solid $light_pink
+  color: $light_pink
+  cursor: pointer
+  border-radius: 8px
+  &:hover
+    color: $white
+    background-color: $light_pink
+    border: 3px solid $pink
+
+header
+  color: $pink
+  margin-bottom: 50px
+  a
+    left: 42%
+    top: -40%
+    .btn
+      cursor: pointer
+  h1
+    font-size: 60px
+    position: absolute
+    left: 50%
+    top: 30%
+    transform: (translate(-50%, 0))
+      
+
+
+
+section
+  margin-bottom: 70px
+  &#lottery-game
+    margin: auto
+    .result
+      display: flex
+      justify-content: center
+      min-width: 30vh
+      .award
+        border: 1px solid $champagne_pink
+        width: 200px
+        height: 200px
+        overflow: hidden
+        min-height: 50vh
+        .prize
+          top: 6%
+          color: $moutainbatten_pink
+        h3  
+          top: 15%
+        img
+          position: absolute
+          filter: brightness(0)
+          transition: 0.5s
+          left: 50%
+          top: 70%
+          transform: translate(-50%, -50%)
+          &:hover
+            filter: brightness(1)
+        .prize
+          // position: absolute
+          // top: 0%
+          // left: 50%
+          // transform: translate(-50%, 0)
+  &#award
+    padding-top: 30px
+    margin: auto
+    width: 80%
+    border: 7px solid $light_pink
+    h3 
+      color: $light_pink
+    .award-list
+      margin: auto
+      display: flex
+      justify-content: center
+      flex-wrap: wrap
+      width: 80%
+      .award
+        border: 1px solid $champagne_pink
+        width: 200px
+        height: 300px
+        overflow: hidden
+        position: relative
+        min-height: 30vh
+        img
+          position: absolute
+          filter: brightness(0)
+          transition: 0.5s
+          left: 50%
+          top: 50%
+          transform: translate(-50%, -50%)
+          &:hover
+            filter: brightness(1)
+        .prize
+          position: absolute
+          top: 10%
+          left: 50%
+          transform: translate(-50%, 0)
+        .number
+          position: absolute
+          bottom: 10%
+          left: 50%
+          transform: translate(-50%, 0)
+// .hidden
+//   display: none
+
+
+section#addPrize
+  top: 10px
+  a
+    text-decoration: none
+    h1 
+      font-size: 57px
+      color: $pink
+  form
+    margin-top: 100px
+    label
+      color: $moutainbatten_pink  
+      font-size: 32px
+      display: block
+      text-align: right
+      left: 7.5% 
+      transform: translate(-35%, 0)
+      margin-bottom: 30px
+      input
+        top: -6px
+        width: 600px
+        border-radius: 5px
+        padding: 6px 0px
+        font-size: 18px
+        border: 3px solid $pink
+        color: $moutainbatten_pink
+        
+        &:focus
+          outline: $pink
+          border: 3px solid $pink
+          color: $moutainbatten_pink
+    .btn
+      background-color: transparent
+      &:hover
+      color: $white
+      background-color: $light_pink
+      
+
+section#editPrize
+  padding: 0px 90px
+  h1 
+    color: $pink
+  .award-list
+    display: flex
+    justify-content: center
+    flex-wrap: wrap
+    .award
+      border: 1px solid $light_pink
+      padding: 50px
+      display: flex
+      align-items: center
+      justify-content: space-between
+      .img
+        min-height: 200px
+        top: 15%
+        vertical-align: center
+      form
+        transform: translate(50%, 0)
+        text-align: right
+        label
+          color: $moutainbatten_pink  
+          font-size: 16px
+          display: block
+          text-align: right
+          left: 7.5% 
+          transform: translate(-50%, 0)
+          margin-bottom: 30px
+          input
+            color: $moutainbatten_pink
+            top: -1px
+            border-radius: 5px
+            // padding: 6px 100px
+            width: 400px
+            font-size: 12px
+            border: 2px solid $pink
+            &:focus
+              outline: $pink
+              border: 2px solid $pink
+              color: $moutainbatten_pink
+        .btn-edit
+          position: absolute
+          transform: translate(-520%, -60%)
+          padding: 5px 20px
+        .btn-delete
+          transform: translate(-150%, 319%)
+          padding: 5px 20px
+          // padding: 200px
+        
+        
